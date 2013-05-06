@@ -108,7 +108,7 @@ CCexe        := $(CCraw_build)	# used to compile `apinames' only
 #
 LINK_LIBRARY = $(LIBTOOL) --mode=link $(CCraw) -o $@ $(OBJECTS_LIST) \
                           -rpath $(libdir) -version-info $(version_info) \
-                          $(LDFLAGS) -no-undefined \
+                          $(LDFLAGS) -no-undefined -avoid-version\
                           # -export-symbols $(EXPORTS_LIST)
 
 # EOF
