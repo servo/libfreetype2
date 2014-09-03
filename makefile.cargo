@@ -1,0 +1,27 @@
+ifeq (androideabi,$(findstring androideabi,$(TARGET)))
+
+CC := $(TARGET)-gcc
+AR := $(TARGET)-ar
+
+CONFIGURE_FLAGS := \
+    --host=arm-linux-androideabi \
+    --with-sysroot=$(ANDROID_TOOLCHAIN)/sysroot \
+    --without-zlib \
+    --disable-shared \
+    $(NULL)
+
+SRC_DIR = $(shell pwd)
+
+.PHONY: all
+all:
+	cd $(OUT_DIR) && CC=$(CC) AR=$(AR) $(SRC_DIR)/configure $(strip $(CONFIGURE_FLAGS))
+	cd $(OUT_DIR) && make -j4
+	cp $(OUT_DIR)/.libs/libfreetype.a $(OUT_DIR)
+	cp -R include $(OUT_DIR)
+
+else
+
+.PHONY: all
+all:
+
+endif
