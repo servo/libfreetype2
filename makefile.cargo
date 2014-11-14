@@ -1,14 +1,30 @@
+ifeq (linux,$(findstring linux,$(TARGET)))
+
+CONFIGURE_FLAGS := \
+    --without-zlib \
+    --disable-shared \
+    --with-pic=yes \
+    --with-harfbuzz=no \
+    $(NULL)
+
+
 ifeq (androideabi,$(findstring androideabi,$(TARGET)))
 
 CC := $(TARGET)-gcc
 AR := $(TARGET)-ar
 
-CONFIGURE_FLAGS := \
+CONFIGURE_FLAGS += \
     --host=arm-linux-androideabi \
     --with-sysroot=$(ANDROID_TOOLCHAIN)/sysroot \
-    --without-zlib \
-    --disable-shared \
     $(NULL)
+
+else
+
+CC ?= gcc
+AR ?= ar
+
+endif
+
 
 SRC_DIR = $(shell pwd)
 
