@@ -3,11 +3,21 @@ ifeq (androideabi,$(findstring androideabi,$(TARGET)))
 CC := $(TARGET)-gcc
 AR := $(TARGET)-ar
 
+else
+
+CC ?= gcc
+AR ?= ar
+
+endif
+
+
+ifeq (linux,$(findstring linux,$(TARGET)))
+
 CONFIGURE_FLAGS := \
-    --host=arm-linux-androideabi \
-    --with-sysroot=$(ANDROID_TOOLCHAIN)/sysroot \
     --without-zlib \
     --disable-shared \
+    --with-pic=yes \
+    --with-harfbuzz=no \
     $(NULL)
 
 SRC_DIR = $(shell pwd)
