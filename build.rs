@@ -9,8 +9,6 @@ fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
     let result = Command::new("make")
         .args(&["-f", "makefile.cargo"])
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
         .status()
         .unwrap();
     assert!(result.success());
