@@ -6,5 +6,5 @@ authors = ["The FreeType Team"]
 build = "build.rs"
 
 [lib]
-name = "freetype-sys"
+name = "freetype_sys"
 path = "lib.rs"
