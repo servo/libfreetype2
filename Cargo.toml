@@ -2,7 +2,7 @@
 name = "freetype-sys"
 version = "2.4.11"
 authors = ["The FreeType Team"]
-
+links = "freetype"
 build = "build.rs"
 
 [lib]
