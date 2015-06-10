@@ -6,16 +6,21 @@ CONFIGURE_FLAGS := \
     --with-pic=yes \
     $(NULL)
 
+ifeq (eabi,$(findstring eabi,$(TARGET)))
 
-ifeq (androideabi,$(findstring androideabi,$(TARGET)))
+    CC := $(TARGET)-gcc
+    AR := $(TARGET)-ar
 
-CC := $(TARGET)-gcc
-AR := $(TARGET)-ar
+    CONFIGURE_FLAGS += \
+        --host=$(TARGET)
 
-CONFIGURE_FLAGS += \
-    --host=arm-linux-androideabi \
-    --with-sysroot=$(ANDROID_TOOLCHAIN)/sysroot \
-    $(NULL)
+    ifeq (androideabi,$(findstring androideabi,$(TARGET)))
+
+        CONFIGURE_FLAGS += \
+            --with-sysroot=$(ANDROID_TOOLCHAIN)/sysroot \
+            $(NULL)
+
+    endif
 
 else
 
