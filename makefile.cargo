@@ -8,8 +8,8 @@ CONFIGURE_FLAGS := \
 
 ifeq (eabi,$(findstring eabi,$(TARGET)))
 
-    CC := $(TARGET)-gcc
-    AR := $(TARGET)-ar
+    CC ?= $(TARGET)-gcc
+    AR ?= $(TARGET)-ar
 
     CONFIGURE_FLAGS += \
         --host=$(TARGET)
