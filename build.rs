@@ -9,7 +9,7 @@ fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
     let make = env::var("MAKE").unwrap_or("make".to_string());
     let result = Command::new(make)
-        .args(&["-f", "makefile.cargo"])
+        .args(&["-R", "-f", "makefile.cargo"])
         .status()
         .unwrap();
     assert!(result.success());
