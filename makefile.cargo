@@ -6,7 +6,7 @@ CONFIGURE_FLAGS := \
     --with-pic=yes \
     $(NULL)
 
-ifeq (eabi,$(findstring eabi,$(TARGET)))
+ifneq ($(HOST),$(TARGET))
 
     CC ?= $(TARGET)-gcc
     AR ?= $(TARGET)-ar
