@@ -1,8 +1,12 @@
 [package]
-name = "freetype-sys"
+name = "servo-freetype-sys"
 version = "2.4.11"
 authors = ["The FreeType Team"]
 links = "freetype"
+license = "FTL / GPL-2.0"
+repository = "https://github.com/servo/libfreetype2/"
+homepage = "http://www.freetype.org/"
+description = "FreeType is a freely available software library to render fonts."
 build = "build.rs"
 
 [lib]
