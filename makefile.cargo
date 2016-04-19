@@ -34,10 +34,10 @@ SRC_DIR = $(shell pwd)
 
 .PHONY: all
 all:
-	cd $(OUT_DIR) && CC="$(CC)" AR="$(AR)" $(SRC_DIR)/configure $(strip $(CONFIGURE_FLAGS))
-	cd $(OUT_DIR) && make -j$(NUM_JOBS)
-	cp $(OUT_DIR)/.libs/libfreetype.a $(OUT_DIR)
-	cp -R include $(OUT_DIR)
+	cd "$(OUT_DIR)" && CC="$(CC)" AR="$(AR)" $(SRC_DIR)/configure $(strip $(CONFIGURE_FLAGS))
+	cd "$(OUT_DIR)" && make -j$(NUM_JOBS)
+	cp "$(OUT_DIR)"/.libs/libfreetype.a "$(OUT_DIR)"
+	cp -R include "$(OUT_DIR)"
 
 else
 
