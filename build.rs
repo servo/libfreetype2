@@ -5,17 +5,22 @@
 extern crate cmake;
 extern crate pkg_config;
 
+use cmake::Config;
 use std::env;
 
 fn main() {
     if !env::var("TARGET").unwrap().contains("eabi") &&
-        pkg_config::Config::new().atleast_version("16.0.10").find("freetype2").is_ok() {
+        pkg_config::Config::new().atleast_version("18.5.12").find("freetype2").is_ok() {
         return
     }
 
-    let dst = cmake::build(".");
+    let dst = Config::new("freetype2").build();
     let out_dir = env::var("OUT_DIR").unwrap();
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
-    println!("cargo:rustc-link-lib=static=freetype");
+    if env::var("PROFILE").unwrap().contains("debug") {
+        println!("cargo:rustc-link-lib=static=freetyped");
+    } else {
+        println!("cargo:rustc-link-lib=static=freetype");
+    }
     println!("cargo:outdir={}", out_dir);
 }
