@@ -3,7 +3,7 @@
 #
 
 
-# Copyright 1996-2000, 2002, 2003, 2004, 2006 by
+# Copyright 1996-2016 by
 # David Turner, Robert Wilhelm, and Werner Lemberg.
 #
 # This file is part of the FreeType project, and may only be used, modified,
@@ -80,9 +80,10 @@ ifeq ($(PLATFORM),unix)
   ifdef must_configure
     ifneq ($(have_Makefile),)
       # we are building FT2 not in the src tree
-	      $(TOP_DIR)/builds/unix/configure $(value CFG)
+	        $(TOP_DIR)/builds/unix/configure $(value CFG)
     else
-	      cd builds/unix; ./configure $(value CFG)
+	      cd builds/unix; \
+	        ./configure $(value CFG)
     endif
   endif
 
