@@ -1,6 +1,6 @@
 [package]
 name = "servo-freetype-sys"
-version = "3.0.0"
+version = "4.0.0"
 authors = ["The FreeType Team"]
 links = "freetype"
 license = "FTL / GPL-2.0"
