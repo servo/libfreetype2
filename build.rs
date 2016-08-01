@@ -5,6 +5,7 @@
 extern crate cmake;
 extern crate pkg_config;
 
+use cmake::Config;
 use std::env;
 
 fn main() {
@@ -13,7 +14,7 @@ fn main() {
         return
     }
 
-    let dst = cmake::build(".");
+    let dst = Config::new(".").build();
     let out_dir = env::var("OUT_DIR").unwrap();
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
     println!("cargo:rustc-link-lib=static=freetype");

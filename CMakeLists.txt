@@ -34,14 +34,14 @@ FT_USE_MODULE( FT_Module_Class, psnames_module_class )
 "
 )  
 
-file(GLOB PUBLIC_H include/freetype/*.h)
-file(GLOB INTERNAL_H include/freetype/internal/*.h)
-file(GLOB SERVICES_H include/freetype/internal/services/*.h)
-file(GLOB CONFIG_H include/freetype/config/*.h ${PROJECT_BINARY_DIR}/ftmodule.h)
-file(GLOB DEVEL_H devel/*.h)
+file(GLOB PUBLIC_H freetype2/include/freetype/*.h)
+file(GLOB INTERNAL_H freetype2/include/freetype/internal/*.h)
+file(GLOB SERVICES_H freetype2/include/freetype/internal/services/*.h)
+file(GLOB CONFIG_H freetype2/include/freetype/config/*.h ${PROJECT_BINARY_DIR}/ftmodule.h)
+file(GLOB DEVEL_H freetype2/devel/*.h)
 set(FREETYPE_H ${PUBLIC_H} ${INTERNAL_H} ${SERVICES_H} ${CONFIG_H} ${DEVEL_H})
   
-set_prefix(BASE_SRC src/base/
+set_prefix(BASE_SRC freetype2/src/base/
   ftbase.h
   ftadvanc.c
   ftcalc.c
@@ -77,7 +77,7 @@ set_prefix(BASE_SRC src/base/
   ftxf86.c
   )
 #truetype
-set_prefix(TT_SRC src/truetype/
+set_prefix(TT_SRC freetype2/src/truetype/
   ttdriver.h
   ttdriver.c
   ttgload.h
@@ -97,7 +97,7 @@ set_prefix(TT_SRC src/truetype/
   tterrors.h
   )
 #type1
-set_prefix(T1_SRC src/type1/
+set_prefix(T1_SRC freetype2/src/type1/
   t1parse.h
   t1parse.c
   t1load.h
@@ -114,7 +114,7 @@ set_prefix(T1_SRC src/type1/
   t1errors.h
   )
 #cff
-set_prefix(CFF_SRC src/cff/
+set_prefix(CFF_SRC freetype2/src/cff/
   cffcmap.h
   cffcmap.c
   cffdrivr.h
@@ -134,7 +134,7 @@ set_prefix(CFF_SRC src/cff/
   cfftypes.h
   )
 #cid
-set_prefix(CID_SRC src/cid/
+set_prefix(CID_SRC freetype2/src/cid/
   cidparse.h
   cidparse.c
   cidload.h
@@ -149,7 +149,7 @@ set_prefix(CID_SRC src/cid/
   ciderrs.h
   )
 #pfr
-set_prefix(PFR_SRC src/pfr/
+set_prefix(PFR_SRC freetype2/src/pfr/
   pfrload.h
   pfrload.c
   pfrgload.h
@@ -166,7 +166,7 @@ set_prefix(PFR_SRC src/pfr/
   pfrtypes.h
   )
 #type42
-set_prefix(T42_SRC src/type42/
+set_prefix(T42_SRC freetype2/src/type42/
   t42objs.h
   t42objs.c
   t42parse.h
@@ -177,13 +177,13 @@ set_prefix(T42_SRC src/type42/
   t42types.h
   )
 #winfonts
-set_prefix(FNT_SRC src/winfonts/
+set_prefix(FNT_SRC freetype2/src/winfonts/
   winfnt.h
   winfnt.c
   fnterrs.h
   )
 #pcf
-set_prefix(PCF_SRC src/pcf/
+set_prefix(PCF_SRC freetype2/src/pcf/
   pcfdrivr.h
   pcfdrivr.c
   pcfread.h
@@ -194,7 +194,7 @@ set_prefix(PCF_SRC src/pcf/
   pcferror.h
   )
 #bdf
-set_prefix(BDF_SRC src/bdf/
+set_prefix(BDF_SRC freetype2/src/bdf/
   bdflib.c
   bdfdrivr.c
   bdf.h
@@ -202,7 +202,7 @@ set_prefix(BDF_SRC src/bdf/
   bdferror.h
   )
 #sfnt
-set_prefix(SFNT_SRC src/sfnt/
+set_prefix(SFNT_SRC freetype2/src/sfnt/
   ttload.h
   ttload.c
   ttmtx.h
@@ -226,7 +226,7 @@ set_prefix(SFNT_SRC src/sfnt/
   sferrors.h
   )
 #autofit
-set_prefix(AUTOF_SRC src/autofit/
+set_prefix(AUTOF_SRC freetype2/src/autofit/
   afangles.h
   afangles.c
   afcjk.h
@@ -253,7 +253,7 @@ set_prefix(AUTOF_SRC src/autofit/
   aftypes.h
   )
 #pshinter
-set_prefix(PSHINTER_SRC src/pshinter/
+set_prefix(PSHINTER_SRC freetype2/src/pshinter/
   pshalgo.h
   pshalgo.c
   pshglob.h
@@ -267,7 +267,7 @@ set_prefix(PSHINTER_SRC src/pshinter/
   pshnterr.h
   )
 #raster
-set_prefix(RASTER_SRC src/raster/
+set_prefix(RASTER_SRC freetype2/src/raster/
   ftraster.h
   ftraster.c
   ftrend1.h
@@ -277,7 +277,7 @@ set_prefix(RASTER_SRC src/raster/
   rasterrs.h
   )
 #smooth
-set_prefix(SMOOTH_SRC src/smooth/
+set_prefix(SMOOTH_SRC freetype2/src/smooth/
   ftgrays.h
   ftgrays.c
   ftsmooth.h
@@ -287,7 +287,7 @@ set_prefix(SMOOTH_SRC src/smooth/
   ftsmerrs.h
   )
 #cache
-set_prefix(CACHE_SRC src/cache/
+set_prefix(CACHE_SRC freetype2/src/cache/
   ftcbasic.c
   ftccache.c
   ftccmap.c
@@ -306,14 +306,14 @@ set_prefix(CACHE_SRC src/cache/
   ftcsbits.h
   )
 #gzip
-set(GZIP_SRC src/gzip/ftgzip.c)
+set(GZIP_SRC freetype2/src/gzip/ftgzip.c)
 #lzw
-set_prefix(LZW_SRC src/lzw/
+set_prefix(LZW_SRC freetype2/src/lzw/
   ftlzw.c
   ftzopen.h
   )
 #psaux
-set_prefix(PSAUX_SRC src/psaux/
+set_prefix(PSAUX_SRC freetype2/src/psaux/
   psobjs.c
   t1decode.c
   t1cmap.c
@@ -322,7 +322,7 @@ set_prefix(PSAUX_SRC src/psaux/
   psauxmod.c
 )
 # psnames
-set_prefix(PSNAMES_SRC src/psnames/
+set_prefix(PSNAMES_SRC freetype2/src/psnames/
   psmodule.c
   pspic.c
 )
@@ -351,7 +351,7 @@ set(ALL_SRC
   ${FREETYPE_H}
   )
 add_definitions(-DFT2_BUILD_LIBRARY)
-include_directories(include)
+include_directories(freetype2/include)
 add_library(freetype STATIC ${ALL_SRC})
 install(TARGETS freetype ARCHIVE DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY freetype2/include/ DESTINATION include)
