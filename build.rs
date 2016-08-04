@@ -14,13 +14,9 @@ fn main() {
         return
     }
 
-    let dst = Config::new("freetype2").build();
+    let dst = Config::new("freetype2").profile("Release").build();
     let out_dir = env::var("OUT_DIR").unwrap();
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
-    if env::var("PROFILE").unwrap().contains("debug") {
-        println!("cargo:rustc-link-lib=static=freetyped");
-    } else {
-        println!("cargo:rustc-link-lib=static=freetype");
-    }
+    println!("cargo:rustc-link-lib=static=freetype");
     println!("cargo:outdir={}", out_dir);
 }
