@@ -14,7 +14,13 @@ fn main() {
         return
     }
 
-    let dst = Config::new("freetype2").profile("Release").build();
+    let dst = Config::new("freetype2")
+        .define("WITH_BZip2", "OFF")
+        .define("WITH_HarfBuzz", "OFF")
+        .define("WITH_PNG", "OFF")
+        .define("WITH_ZLIB", "OFF")
+        .profile("Release")
+        .build();
     let out_dir = env::var("OUT_DIR").unwrap();
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
     println!("cargo:rustc-link-lib=static=freetype");
