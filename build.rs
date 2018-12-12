@@ -16,7 +16,11 @@ fn main() {
         return
     }
 
-    let dst = Config::new("freetype2")
+    let mut config = Config::new("freetype2");
+    if let Ok(s) = env::var("FREETYPE_CMAKE_GENERATOR") {
+        config.generator(s);
+    }
+    let dst = config
         .define("WITH_BZip2", "OFF")
         .define("WITH_HarfBuzz", "OFF")
         .define("WITH_PNG", "OFF")
